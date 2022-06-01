@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">New User</h2>
+    <p>For exaplanations about Thymeleaf in this form: see
+        <a href="https://spring.io/guides/gs/handling-form-submission/">https://spring.io/guides/gs/handling-form-submission/</a>
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/addProduct}" th:object="${product}" method="post" >
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="name" class="col-form-label">name</label>
+                        <input type="text" id="name" placeholder="name" class="form-control" th:field="*{name}">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="image" class="col-form-label">name</label>
+                        <input type="text" id="image" placeholder="name" class="form-control" th:field="*{image}">
+                        <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="quantity" class="col-form-label">name</label>
+                        <input type="number" id="quantity" placeholder="name" class="form-control" th:field="*{quantity}">
+                        <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="price" class="col-form-label">name</label>
+                        <input type="number" id="price" placeholder="name" class="form-control" th:field="*{price}">
+                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="discount" class="col-form-label">name</label>
+                        <input type="number" id="discount" placeholder="name" class="form-control" th:field="*{discount}">
+                        <span th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Add Product">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

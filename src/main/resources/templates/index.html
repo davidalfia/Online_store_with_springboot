@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/main.js"></script>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+    <form action="#" th:action="@{/addProduct}" th:object="${product}" method="post" >
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name" class="col-form-label">name</label>
+                <input type="text" id="name" placeholder="name" class="form-control" th:field="*{name}">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="image" class="col-form-label">image</label>
+                <input type="text" id="image" placeholder="image" class="form-control" th:field="*{image}">
+                <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="quantity" class="col-form-label">quantity</label>
+                <input type="number" id="quantity" placeholder="quantity" class="form-control" th:field="*{quantity}">
+                <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="price" class="col-form-label">price</label>
+                <input type="number" id="price" placeholder="price" class="form-control" th:field="*{price}">
+                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="discount" class="col-form-label">discount</label>
+                <input type="number" id="discount" placeholder="discount" class="form-control" th:field="*{discount}">
+                <span th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-5">
+                <input type="submit" class="btn btn-primary" value="Add Product">
+            </div>
+        </div>
+
+    </form>
+</main>
+<!-- /.container -->
+
+</body>
+</html>

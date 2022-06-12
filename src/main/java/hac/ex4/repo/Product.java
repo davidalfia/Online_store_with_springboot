@@ -23,15 +23,16 @@ public class Product {
     @NotEmpty(message= "Name is mandatory")
     private String name;
 
-    @NotEmpty(message= "Name is mandatory")
+    @NotEmpty(message= "Image is mandatory")
     private String image = "";
 
     @Min(value = 0, message = "min value is > 0" )
     private int quantity;
 
-
+    @Min(value = 0, message = "min value is > 0" )
     private  double price;
 
+    @Min(value = 0, message = "min value is > 0" )
     private  double discount ;
 
     public Product() {}

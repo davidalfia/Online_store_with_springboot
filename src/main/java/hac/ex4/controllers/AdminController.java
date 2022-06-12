@@ -7,34 +7,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
 public class AdminController {
 
-    private String message = "david";
+    private String message = "1";
 
     @Autowired
     private ProductRepository repository;
     private ProductRepository getRepo() {return repository;}
 
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String main(Model model,Product product) {
-        model.addAttribute("message", message);
-        return "index"; //view
+        model.addAttribute("products",getRepo().findAll());
+        return "store"; //view
     }
 
-    @PostMapping("/addProduct")
+    @GetMapping("/admin/addform")
+    public String addForm(Product product,BindingResult result,Model model){
+            return "add-product";
+    }
+
+    @GetMapping("/admin/delete/{id}")
+    public String deleteById(@PathVariable("id") long id, Model model) {
+        Product product = getRepo()
+                .findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException("Invalid user Id:" + id)
+                );
+        getRepo().delete(product);
+        model.addAttribute("products", getRepo().findAll());
+        return "store";
+    }
+
+    @PostMapping("/admin/addProduct")
     public String postAddProduct(@Valid Product product, BindingResult result, Model model){
         if (result.hasErrors()) {
-            return "index";
+            return "add-product";
         }
-    getRepo().save(product);
-        return "index";
+        getRepo().save(product);
+        model.addAttribute("products",getRepo().findAll());
+        return "store";
     }
-
-
 }

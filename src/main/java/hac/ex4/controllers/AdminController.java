@@ -14,8 +14,6 @@ import javax.validation.Valid;
 @Controller
 public class AdminController {
 
-    private String message = "1";
-
     @Autowired
     private ProductRepository repository;
     private ProductRepository getRepo() {return repository;}
@@ -23,8 +21,9 @@ public class AdminController {
     @GetMapping("/admin")
     public String main(Model model,Product product) {
         model.addAttribute("products",getRepo().findAll());
-        return "store"; //view
+        return "admin-store"; //view
     }
+
 
     @GetMapping("/admin/addform")
     public String addForm(Product product,BindingResult result,Model model){
@@ -40,7 +39,7 @@ public class AdminController {
                 );
         getRepo().delete(product);
         model.addAttribute("products", getRepo().findAll());
-        return "store";
+        return "admin-store";
     }
 
     @PostMapping("/admin/addProduct")
@@ -50,6 +49,6 @@ public class AdminController {
         }
         getRepo().save(product);
         model.addAttribute("products",getRepo().findAll());
-        return "store";
+        return "admin-store";
     }
 }

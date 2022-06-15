@@ -39,8 +39,7 @@ public class StoreController {
 
     @GetMapping("/cart")
     public String cart(Model model, Product product){
-
-        model.addAttribute("products",shoppingCart.getShoppingCart());
+        model.addAttribute("userProducts",shoppingCart.getShoppingCart());
         return "cart";
     }
 

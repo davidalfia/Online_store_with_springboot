@@ -11,44 +11,67 @@
 </head>
 
 <body>
+<div class=" col-12 btn-sm" style="background-image: url('https://www.ezrshelving.com/user/content/slideshow/mobile-shoe-shelving-945.jpg')">
+    <div class="col d-flex justify-content-center btn-sm">
+        <div class="card bg-light text-center bg-opacity-75">
+            <div class="card-body">
+                <h5 class="card-title">Alfia's Shoes Market</h5>
+                <p class="card-text">Find it, love it, buy it.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <main role="main" class="container">
+    <br>
+    <div class="col-12 col-md-12">
+        <form class="alert text-warning alert-warning">
+            <h3 class="text info" >Set your product attributes</h3>
+        </form>
+    </div><br>
+
     <form action="#" th:action="@{/admin/addProduct}" th:object="${product}" method="post" >
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="name" class="col-form-label">name</label>
-                <input type="text" id="name" placeholder="name" class="form-control" th:field="*{name}">
-                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="image" class="col-form-label">image</label>
-                <input type="text" id="image" placeholder="image" class="form-control" th:field="*{image}">
-                <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="quantity" class="col-form-label">quantity</label>
-                <input type="number" id="quantity" placeholder="quantity" class="form-control" th:field="*{quantity}">
-                <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="price" class="col-form-label">price</label>
-                <input type="number" id="price" placeholder="price" class="form-control" th:field="*{price}">
-                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="discount" class="col-form-label">discount</label>
-                <input type="number" id="discount" placeholder="discount" class="form-control" th:field="*{discount}">
-                <span th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}" class="text-danger"></span>
+        <div class="container border border-warning">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <h8 for="name" class="col-form-label text-warning">Name</h8>
+                    <input type="text" id="name" placeholder="Set product name" class="form-control" th:field="*{name}">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4 ">
+                    <h8 for="image" class="col-form-label text-warning">Image</h8>
+                    <input type="text" id="image" placeholder="Set product image\url" class="form-control" th:field="*{image}">
+                    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <h8 for="quantity" class="col-form-label text-warning">Quantity</h8>
+                    <input type="number" id="quantity" placeholder="Set product quantity" class="form-control" th:field="*{quantity}">
+                    <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <h8 for="price" class="col-form-label text-warning">Price</h8>
+                    <input type="number" id="price" placeholder="Set product price" class="form-control" th:field="*{price}">
+                    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <h8 for="discount" class="col-form-label text-warning">Discount</h8>
+                    <input type="number" id="discount" placeholder="Set discount" class="form-control" th:field="*{discount}">
+                    <span th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <br>
+                    <input type="submit" class="btn btn-success" value="Add Product">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 mt-5">
-                <input type="submit" class="btn btn-primary" value="Add Product">
-            </div>
-        </div>
+
     </form>
+
 </main>
 <!-- /.container -->
-
+<div class="mt-5 p-4 bg-light text-red text-center">
+    <p>ⒸYitzhak Azo - David AlfiaⒸ</p>
+</div>
 </body>
 </html>

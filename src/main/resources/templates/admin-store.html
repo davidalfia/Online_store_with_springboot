@@ -12,17 +12,6 @@
 
 <body>
 
-<div class=" col-12 btn-sm" style="background-image: url('https://www.ezrshelving.com/user/content/slideshow/mobile-shoe-shelving-945.jpg')">
-    <div class="col d-flex justify-content-center btn-sm">
-        <div class="card bg-light text-center bg-opacity-75">
-            <div class="card-body">
-                <h5 class="card-title">Alfia's Shoes Market</h5>
-                <p class="card-text">Find it, love it, buy it.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <main role="main" class="container">
     <br>
     <div class="col-12 col-md-12">
@@ -33,11 +22,11 @@
 
     <div class="card-deck">
         <ol  class= "d-flex justify-content-around flex-wrap" id="cardsHolder">
-            <div class="card " th:each="p:${products}" style="width: 14rem;">
+            <div class="card " th:each="p:${products}" style="width: 12rem;"  >
                 <div class="card-body">
                     <img class="card-img-top" th:src="${p.image}" style="width: 8rem;height: 8rem" alt="Card image cap">
                     <h5 class="card-title" th:text="${p.name}"></h5>
-                    <p class="card-text"></p>
+                    <p class="card-text"></p>`
                     <p class="card-text"><small class="text-muted"></small></p>
                     <a href="#" class="btn btn-primary">Update</a>
                     <a th:href="@{/admin/delete/{id}(id=${p.id})}" class="btn btn-danger">Delete</a>

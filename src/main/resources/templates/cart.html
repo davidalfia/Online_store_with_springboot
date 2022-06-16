@@ -11,31 +11,18 @@
 </head>
 
 <body style="background-color: burlywood">
+<div th:replace="fragments/topnav.html :: storeNavbar" >
 
-<div class=" col-12 btn-lg" style="background-image: url('https://www.sandiegorunningco.com/wp-content/uploads/2020/08/Running-Store-San-Diego-768x402.jpg')">
-    <div class="col d-flex justify-content-center btn-sm">
-        <div class="card bg-light text-center bg-opacity-75">
-            <div class="card-body">
-                <h5 class="card-title">Alfia's Shoes Market</h5>
-                <p class="card-text">Find it, love it, buy it.</p>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPersonalInfo">Who we are</a>
-            </div>
-        </div>
-    </div>
-</div><br>
+</div>
+
+<br>
 
 <main role="main" class="container" style="background-image: url('https://img.freepik.com/free-photo/wooden-table-background_23-2147962363.jpg')">
 
-    <div class="col-12 col-md-12 d-flex justify-content-center">
-        <form class="alert text-warning alert-warning">
-            <h3 class="text info" >Products in your shopping cart</h3>
-        </form>
-    </div><br>
-
 
     <div class="card-deck">
-        <ol  class= "d-flex justify-content-around flex-wrap" id="cardsHolder">
-            <div class="card " th:each="p:${userProducts}" style="width: 14rem;">
+        <ol  class= "d-flex flex-wrap" id="cardsHolder">
+            <div class="card " th:each="p:${userProducts}" style="width: 12rem;">
                 <div class="card-body">
                     <img class="card-img-top" th:src="${p.image}" style="width: 8rem;height: 8rem" alt="Card image cap">
                     <h5 class="card-title" th:text="${p.name}"></h5>
@@ -47,7 +34,6 @@
         </ol>
     </div>
 
-    <a href="/">(return to main store)</a>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

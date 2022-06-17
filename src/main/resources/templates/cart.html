@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,7 +33,8 @@
     <br>
     <a class="btn btn-dark">Empty Cart</a>
     <a class="btn btn-success">Checkout</a>
-    <h3> Total: (x items) $255</h3>
+
+    <h3> Total: th:text(${} items) $255</h3>
     <h6>Items in your bag are not reserved — check out now to make them yours.</h6>
 
     <div class="card-deck">
@@ -46,7 +47,10 @@
                     <p class="card-text"th:text=" ${p.price}-${p.price}*${p.discount}/100"></p>
                     <p class="card-text"></p>
                     <p class="card-text"><small class="text-muted"></small></p>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <form action="#" th:action="@{/cart/delete}" th:object="${p}" method="post">
+                        <input type="hidden" name="id" th:value="${p.id}">
+                        <input class="btn btn-danger" type="submit" value="Delete" />
+                    </form>
                 </div>
                 <br>
             </div>

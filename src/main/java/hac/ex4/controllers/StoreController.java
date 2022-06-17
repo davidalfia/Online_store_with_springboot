@@ -43,4 +43,10 @@ public class StoreController {
         return "cart";
     }
 
+    @PostMapping ("/cart/delete")
+    public String cart(@RequestParam("id") long id, Model model){
+        shoppingCart.delete(id);
+        model.addAttribute("userProducts",shoppingCart.getShoppingCart());
+        return "cart";
+    }
 }

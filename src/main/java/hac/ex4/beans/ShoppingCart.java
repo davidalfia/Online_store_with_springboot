@@ -32,4 +32,12 @@ public class ShoppingCart implements Serializable {
         shoppingCart.add(product);
     }
 
+    public void delete(long id){
+        for(Product p : shoppingCart){
+            if(p.getId() == id) {
+                shoppingCart.remove(p);
+                return;
+            }
+        }
+    }
 }

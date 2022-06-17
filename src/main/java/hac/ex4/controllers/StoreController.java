@@ -1,5 +1,6 @@
 package hac.ex4.controllers;
 
+import hac.ex4.Service.productService;
 import hac.ex4.beans.ShoppingCart;
 import hac.ex4.repo.Product;
 import hac.ex4.repo.ProductRepository;
@@ -16,23 +17,22 @@ import javax.annotation.Resource;
 public class StoreController {
 
     @Autowired
-    private ProductRepository repository;
-    private ProductRepository getRepo() {return repository;}
+    private productService productService;
 
     @Autowired
     private ShoppingCart shoppingCart;
 
     @GetMapping("/")
     public String home(Model model, Product product) {
-        model.addAttribute("products",getRepo().findAll());
+        model.addAttribute("products",productService.getProducts());
         return "store";
     }
 
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("id") long id, Model model) {
-        Product product = getRepo().findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+        Product product = productService.getProduct(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
         shoppingCart.add(product);
-        model.addAttribute("products",repository.findAll());
+        model.addAttribute("products",productService.getProducts());
         return "store";
 
     }

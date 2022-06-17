@@ -23,13 +23,12 @@ public class ShoppingCart implements Serializable {
         this.shoppingCart = new ArrayList<>();
     }
 
-    boolean in(Product product) {
-        if(shoppingCart.contains(product))
-            System.out.println("in");
-        return false;
-    }
-
     public void add(Product product) {
+        for(Product p : shoppingCart){
+            if(product.getId()  == p.getId()){
+                return;
+            }
+        }
         shoppingCart.add(product);
     }
 

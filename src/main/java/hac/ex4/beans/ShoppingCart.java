@@ -40,4 +40,8 @@ public class ShoppingCart implements Serializable {
             }
         }
     }
+
+    public int size() {
+        return shoppingCart.size();
+    }
 }

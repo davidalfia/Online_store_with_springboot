@@ -10,29 +10,52 @@
 
 </head>
 
-<body style="background-color: burlywood">
+<body style="background-color: sandybrown">
+
+<div class=" col-12 btn-lg" style="background-image: url('https://www.sandiegorunningco.com/wp-content/uploads/2020/08/Running-Store-San-Diego-768x402.jpg')">
+    <div class="col d-flex justify-content-center btn-sm">
+        <div class="card bg-light text-center bg-opacity-75">
+            <div class="card-body">
+                <h5 class="card-title">Alfia's Shoes Market</h5>
+                <p class="card-text">Find it, love it, buy it.</p>
+                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPersonalInfo">Who we are</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:replace="fragments/topnav.html :: storeNavbar" >
 </div>
 
 <br>
 
-<main role="main" class="container" style="background-image: url('https://img.freepik.com/free-photo/wooden-table-background_23-2147962363.jpg')">
-
+<main role="main" class="container" style="background-image: url('https://i.pinimg.com/originals/12/9c/06/129c06074a54fd758e74474853e3edc0.jpg')">
+    <br>
+    <a class="btn btn-dark">Empty Cart</a>
+    <a class="btn btn-success">Checkout</a>
+    <h3> Total: (x items) $255</h3>
+    <h6>Items in your bag are not reserved — check out now to make them yours.</h6>
 
     <div class="card-deck">
         <ol  class= "d-flex flex-wrap" id="cardsHolder">
-            <div class="card " th:each="p:${userProducts}" style="width: 12rem;">
+            <div class="card" th:each="p:${userProducts}" style="width: 12rem;">
                 <div class="card-body">
                     <img class="card-img-top" th:src="${p.image}" style="width: 8rem;height: 8rem" alt="Card image cap">
                     <h5 class="card-title" th:text="${p.name}"></h5>
+                    <p class="text-decoration-line-through"th:text=" ${p.price}*1"></p>
+                    <p class="card-text"th:text=" ${p.price}-${p.price}*${p.discount}/100"></p>
                     <p class="card-text"></p>
                     <p class="card-text"><small class="text-muted"></small></p>
-                    <a href="#" class="btn btn-primary">Update</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
                 </div>
+                <br>
             </div>
         </ol>
     </div>
-
+    <a class="btn btn-dark">Empty Cart</a>
+    <a class="btn btn-success">Checkout</a>
+    <br>
+    <br>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

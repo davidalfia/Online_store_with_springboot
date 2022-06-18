@@ -49,6 +49,7 @@ public class StoreController {
     public String cart(Model model, Product product){
         model.addAttribute("userProducts",shoppingCart.getShoppingCart());
         model.addAttribute("shoppingCartSize",shoppingCart.size());
+        model.addAttribute("shoppingCartTotal",shoppingCart.finalPrice());
         return "cart";
     }
 
@@ -57,6 +58,7 @@ public class StoreController {
         shoppingCart.delete(id);
         model.addAttribute("userProducts",shoppingCart.getShoppingCart());
         model.addAttribute("shoppingCartSize",shoppingCart.size());
+        model.addAttribute("shoppingCartTotal",shoppingCart.finalPrice());
         return "cart";
     }
 }

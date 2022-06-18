@@ -44,4 +44,16 @@ public class ShoppingCart implements Serializable {
     public int size() {
         return shoppingCart.size();
     }
+
+    public double finalPrice() {
+        double total = 0, price, discount, priceAfterDiscount = 0;
+
+        for(Product p : shoppingCart) {
+            price = p.getPrice();
+            discount = p.getDiscount();
+            priceAfterDiscount = price-(price*discount/100);
+            total += priceAfterDiscount;
+        }
+        return total;
+    }
 }

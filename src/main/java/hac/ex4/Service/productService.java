@@ -20,7 +20,11 @@ public class productService {
     public void deleteProduct(Product product) {repository.delete(product);}
     public Optional<Product> getProduct(Long id) {return repository.findById(id);}
     public List<Product> getProducts() {return repository.findAll();}
-
-
+    public List<Product> getProductByNameLikeJPA(String name){
+        if(name!=null)
+            return repository.getProductByNameLikeJPA(name);
+        else
+            return repository.findAll();
+    }
 
 }

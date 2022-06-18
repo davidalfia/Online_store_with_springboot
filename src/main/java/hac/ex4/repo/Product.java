@@ -24,7 +24,7 @@ public class Product {
     private String name;
 
     @NotEmpty(message= "Image is mandatory")
-    private String image = "https://islandpress.org/books/modeling-environment";
+    private String image = "https://islandpress.org/books/modeling-environment";    
 
     @Min(value = 0, message = "min value is > 0" )
     private int quantity;

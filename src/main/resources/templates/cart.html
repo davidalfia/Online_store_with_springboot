@@ -18,7 +18,6 @@
             <div class="card-body">
                 <h5 class="card-title">Alfia's Shoes Market</h5>
                 <p class="card-text">Find it, love it, buy it.</p>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPersonalInfo">Who we are</a>
             </div>
         </div>
     </div>
@@ -33,8 +32,7 @@
     <br>
     <a class="btn btn-dark">Empty Cart</a>
     <a class="btn btn-success">Checkout</a>
-    <span th:text="'Total: '+ ${shoppingCartSize}"></span>
-    <h3> Total: th:text(${} items) $255</h3>
+    <h3><span th:text="'Total: ('+ ${shoppingCartSize} +' items) $xxx'"></span></h3>
     <h6>Items in your bag are not reserved — check out now to make them yours.</h6>
 
     <div class="card-deck">

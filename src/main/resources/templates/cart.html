@@ -12,27 +12,17 @@
 
 <body style="background-color: sandybrown">
 
-<div class=" col-12 btn-lg" style="background-image: url('https://www.sandiegorunningco.com/wp-content/uploads/2020/08/Running-Store-San-Diego-768x402.jpg')">
-    <div class="col d-flex justify-content-center btn-sm">
-        <div class="card bg-light text-center bg-opacity-75">
-            <div class="card-body">
-                <h5 class="card-title">Alfia's Shoes Market</h5>
-                <p class="card-text">Find it, love it, buy it.</p>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div th:replace="fragments/topnav.html :: storeNavbar" >
 </div>
 
 <br>
 
-<main role="main" class="container" style="background-image: url('https://i.pinimg.com/originals/12/9c/06/129c06074a54fd758e74474853e3edc0.jpg')">
+<main role="main" class="container">
     <br>
     <div class="card-deck">
         <ol  class= "d-flex flex-wrap" id="cardsHolder">
-            <div class="card" th:each="p:${userProducts}" style="width: 12rem;">
+            <div class="card m-3 p-3" th:each="p:${userProducts}" style="width: 12rem;">
                 <div class="card-body">
                     <img class="card-img-top" th:src="${p.image}" style="width: 8rem;height: 8rem" alt="Card image cap">
                     <h5 class="card-title" th:text="${p.name}"></h5>
@@ -49,8 +39,8 @@
             </div>
         </ol>
     </div>
-    <a  th:href="@{/cart/emptyCart}" class="btn btn-dark">Empty Cart</a>
-    <a  th:href="@{/cart/checkout}" class="btn btn-dark">Checkout</a>
+    <a  th:href="@{/cart/emptyCart}" class="btn btn-outline-dark ">Empty Cart</a>
+    <a  th:href="@{/cart/checkout}" class="btn btn-outline-dark">Checkout</a>
     <br>
     <br>
 </main>

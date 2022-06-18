@@ -1,6 +1,5 @@
 package hac.ex4.repo;
 
-import lombok.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +36,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, String image,int quantity,double price,double discount) {
+    public Product(String name, String image, int quantity, double price, double discount) {
         this.name = name;
         this.image = image;
         this.quantity = quantity;

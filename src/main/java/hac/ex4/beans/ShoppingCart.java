@@ -3,12 +3,11 @@ package hac.ex4.beans;
 import hac.ex4.repo.Product;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 
 @Component
 @Getter
@@ -23,6 +22,10 @@ public class ShoppingCart implements Serializable {
         this.shoppingCart = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param product to add, only if not in cart
+     */
     public void add(Product product) {
         for(Product p : shoppingCart){
             if(product.getId()  == p.getId()){
@@ -32,6 +35,11 @@ public class ShoppingCart implements Serializable {
         shoppingCart.add(product);
     }
 
+
+    /**
+     *
+     * @param id delete product from cart by id
+     */
     public void delete(long id){
         for(Product p : shoppingCart){
             if(p.getId() == id) {
@@ -43,12 +51,15 @@ public class ShoppingCart implements Serializable {
 
     /**
      *
-     * @return
+     * @return shopping cart size
      */
     public int size() {
         return shoppingCart.size();
     }
 
+    /**
+     * empty cart
+     */
     public void deleteAll(){
         shoppingCart.removeAll(getShoppingCart());
     }

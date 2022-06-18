@@ -20,6 +20,10 @@ public class StoreController {
     @Autowired
     private ShoppingCart shoppingCart;
 
+    /**
+     *
+     * @return home page store with 5 best discount
+     */
     @GetMapping("/")
     public String home(Model model, Product product) {
         model.addAttribute("products",productService.findTop5BestDiscount());
@@ -37,9 +41,15 @@ public class StoreController {
 
     }
 
+    /**
+     *
+     * @param keyword from search bar to search in stock
+     * @return store page
+     */
     @GetMapping("/search")
     public String search(@RequestParam("keyword") String keyword, Model model) {
         model.addAttribute("products",productService.getProductByNameLikeJPA(keyword));
+        model.addAttribute("shoppingCartSize",shoppingCart.size());
         return "store";
     }
 

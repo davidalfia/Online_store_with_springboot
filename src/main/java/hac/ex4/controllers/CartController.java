@@ -19,6 +19,10 @@ public class CartController {
     @Autowired
     private ProductService productService;
 
+    /**
+     *
+     * @return cart page
+     */
     @GetMapping("/cart")
     public String cart(Model model, Product product){
         model.addAttribute("userProducts",shoppingCart.getShoppingCart());
@@ -26,18 +30,32 @@ public class CartController {
         return "cart";
     }
 
+    /**
+     *
+     * @param id of cart product to delete
+     * @return cart page
+     */
     @PostMapping("/cart/delete")
     public String cart(@RequestParam("id") long id){
         shoppingCart.delete(id);
         return "redirect:/cart";
     }
 
+    /**
+     *
+     * @return cart page
+     */
     @GetMapping("/cart/emptyCart")
     public String emptyCart(){
         shoppingCart.deleteAll();
         return "redirect:/cart";
     }
 
+
+    /**
+     * checkout from cart handle payment with @transactional
+     * @return store page
+     */
     @GetMapping("/cart/checkout")
     public String checkout(Model model){
         try{

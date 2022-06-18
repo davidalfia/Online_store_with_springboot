@@ -1,6 +1,7 @@
 package hac.ex4.Service;
 
 import hac.ex4.beans.ShoppingCart;
+import hac.ex4.repo.PaymentRepository;
 import hac.ex4.repo.Product;
 import hac.ex4.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository repository;
+
+    @Autowired
+    private PaymentService paymentService;
 
     public void addProducts(ArrayList<Product> products){repository.saveAll(products);}
     public void saveProduct(Product product) {repository.save(product);}
@@ -40,6 +44,7 @@ public class ProductService {
             } else if (product.getQuantity() < 0) {
                 throw new IllegalArgumentException("product " + p.getName() + "is out of stock, purchase has canceled. you have not been charged");
             }
+            paymentService.add(p);
         }
     }
 

@@ -25,6 +25,7 @@ public class StoreController {
     @GetMapping("/")
     public String home(Model model, Product product) {
         model.addAttribute("products",productService.getProducts());
+        model.addAttribute("shoppingCartSize",shoppingCart.size());
         return "store";
     }
 
@@ -33,6 +34,7 @@ public class StoreController {
         Product product = productService.getProduct(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
         shoppingCart.add(product);
         model.addAttribute("products",productService.getProducts());
+        model.addAttribute("shoppingCartSize",shoppingCart.size());
         return "store";
 
     }
@@ -54,6 +56,7 @@ public class StoreController {
     public String cart(@RequestParam("id") long id, Model model){
         shoppingCart.delete(id);
         model.addAttribute("userProducts",shoppingCart.getShoppingCart());
+        model.addAttribute("shoppingCartSize",shoppingCart.size());
         return "cart";
     }
 }

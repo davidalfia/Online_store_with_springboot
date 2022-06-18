@@ -41,7 +41,15 @@ public class ShoppingCart implements Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int size() {
         return shoppingCart.size();
+    }
+
+    public void deleteAll(){
+        shoppingCart.removeAll(getShoppingCart());
     }
 }

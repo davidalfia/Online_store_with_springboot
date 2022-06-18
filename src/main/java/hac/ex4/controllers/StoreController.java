@@ -1,39 +1,39 @@
 package hac.ex4.controllers;
 
-import hac.ex4.Service.productService;
+import hac.ex4.Service.ProductService;
 import hac.ex4.beans.ShoppingCart;
 import hac.ex4.repo.Product;
-import hac.ex4.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import javax.annotation.Resource;
 
 
 @Controller
 public class StoreController {
 
     @Autowired
-    private productService productService;
+    private ProductService productService;
 
     @Autowired
     private ShoppingCart shoppingCart;
 
     @GetMapping("/")
     public String home(Model model, Product product) {
-        model.addAttribute("products",productService.getProducts());
+        model.addAttribute("products",productService.findTop5BestDiscount());
+        model.addAttribute("shoppingCartSize",shoppingCart.size());
         return "store";
     }
 
     @PostMapping("/addToCart")
-    public String addToCart(@RequestParam("id") long id, Model model) {
+    public String addToCart(@RequestParam("id") long id, @RequestParam("quantity") int quantity,  Model model) {
         Product product = productService.getProduct(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
-        shoppingCart.add(product);
-        model.addAttribute("products",productService.getProducts());
-        return "store";
+        Product p = new Product(product.getName(),product.getImage(),quantity,product.getPrice(),product.getDiscount());
+        p.setId(product.getId());
+        shoppingCart.add(p);
+        return "redirect:/";
 
     }
 
@@ -43,17 +43,4 @@ public class StoreController {
         return "store";
     }
 
-    @GetMapping("/cart")
-    public String cart(Model model, Product product){
-        model.addAttribute("userProducts",shoppingCart.getShoppingCart());
-        model.addAttribute("shoppingCartSize",shoppingCart.size());
-        return "cart";
-    }
-
-    @PostMapping ("/cart/delete")
-    public String cart(@RequestParam("id") long id, Model model){
-        shoppingCart.delete(id);
-        model.addAttribute("userProducts",shoppingCart.getShoppingCart());
-        return "cart";
-    }
 }

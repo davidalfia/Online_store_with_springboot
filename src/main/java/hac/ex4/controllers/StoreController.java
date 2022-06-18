@@ -37,6 +37,12 @@ public class StoreController {
 
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam("keyword") String keyword, Model model) {
+        model.addAttribute("products",productService.getProductByNameLikeJPA(keyword));
+        return "store";
+    }
+
     @GetMapping("/cart")
     public String cart(Model model, Product product){
         model.addAttribute("userProducts",shoppingCart.getShoppingCart());
